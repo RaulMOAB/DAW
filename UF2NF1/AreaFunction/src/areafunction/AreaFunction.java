@@ -15,7 +15,7 @@ public class AreaFunction {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) {  
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el ancho del rectángulo");
         double width = sc.nextDouble();
