@@ -19,8 +19,8 @@ public class DniLetter {
         Scanner sc = new Scanner(System.in);
         System.out.println("Escribe los dígitos de tu DNI");
         final int DNI = sc.nextInt();
-        char letter = dniLetter(DNI);
-        System.out.println("Tu DNI es " + DNI + "-" + letter);
+        char letter = dniLetter(DNI); 
+       System.out.println("Tu DNI es " + DNI + "-" + letter);
     }
 
     private static char dniLetter(int dni) {
@@ -102,7 +102,7 @@ public class DniLetter {
             break;    
                 
         }
-        return letra;
+        return letra; // Devuelve letra
     }
     
 }
