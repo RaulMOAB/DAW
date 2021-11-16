@@ -18,7 +18,7 @@ public class PaperScissorRockFunction {
     public static void main(String[] args) {
     int playerWin = 0;
     int cpuWin = 0;
-    displayRules();
+
     do {
         int player = playerTurn();
         int cpu = cpuTurn();
@@ -36,7 +36,16 @@ public class PaperScissorRockFunction {
 
     }
 
+    public static int menu(int option){
+        Scanner sc = new Scanner(System.in);
+        option = sc.nextInt();
 
+            System.out.println("1. Mostrar Reglas de juego");
+            System.out.println("2. Jugar");
+            System.out.println("3. Salir");
+
+        return option;
+    }
 
     /**
      * Muesta las reglas del juego
@@ -60,7 +69,7 @@ public class PaperScissorRockFunction {
     }
 
     /**
-     * Funcón que genera un número aleatorio entre 1 y 3 que sera la tirada de
+     * Función que genera un número aleatorio entre 1 y 3 que sera la tirada de
      * la máquina
      *
      * @return randomNum
