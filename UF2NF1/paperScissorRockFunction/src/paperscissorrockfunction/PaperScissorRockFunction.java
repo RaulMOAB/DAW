@@ -8,7 +8,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- *
  * @author alumne
  */
 public class PaperScissorRockFunction {
@@ -17,10 +16,27 @@ public class PaperScissorRockFunction {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        displayMenu();
+    int playerWin = 0;
+    int cpuWin = 0;
+    displayRules();
+    do {
+        int player = playerTurn();
+        int cpu = cpuTurn();
+        int win = checkWin(player, cpu);
+
+        if (win == 1) {
+            playerWin = cont(playerWin);
+        }else if(win == -1){
+            cpuWin = cont(cpuWin);
+        }else{
+            System.out.println("EMPATE");
+        }
+    displayRound(playerWin, cpuWin);
+    } while (isGameFinished(playerWin, cpuWin));
 
     }
+
+
 
     /**
      * Muesta las reglas del juego
@@ -44,42 +60,16 @@ public class PaperScissorRockFunction {
     }
 
     /**
-     * Muesta el menú del juego y da la opción al usuario de escoger
-     *
-     * @param sc número introducido por el usuario
-     *
-     */
-    public static void displayMenu() {
-        Scanner sc = new Scanner(System.in);
-        int option ;
-        do {
-            
-            System.out.println("                     |------ MENÚ ------|");
-            System.out.println("");
-            System.out.println("1. REGLAS DEL JUEGO");
-            System.out.println("2. JUGAR");
-            System.out.println("3. SALIR");
-            System.out.println("");
-            option = sc.nextInt();
-            if (option == 1) {
-                displayRules();
-            } else if (option == 2) {
-                randomCpuNumber();
-                playerTurn();
-            }
-        } while (option != 3);
-
-    }
-
-    /**
      * Funcón que genera un número aleatorio entre 1 y 3 que sera la tirada de
      * la máquina
      *
      * @return randomNum
      */
-    public static int randomCpuNumber() {
+    public static int cpuTurn() {
         Random r = new Random();
-        int randomNum = r.nextInt(3) + 1;
+        int randomNum = r.nextInt(3);
+        System.out.print("La maquina ha  elegido ...");
+        displayTurn(randomNum);
         return randomNum;
     }
 
@@ -87,23 +77,28 @@ public class PaperScissorRockFunction {
      * Función que muestra las opciones a escoger al usuario y evalua si la
      * opción es válida
      *
-     * @param sc
+     * @param
      * @return el número que eñ usuario ha introducido
      */
     public static int playerTurn() {
         Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
+        int option;
 
         do {
+
             System.out.println("Escoge una opción");
             System.out.println("");
             System.out.println("[0] Piedra        [1] Papel              [2] Tijeras");
-
-            if (option != 0 || option != 1 || option != 2) {
+            option = sc.nextInt();
+            if (option != 0 && option != 1 && option != 2) {
                 System.out.println("Opción no válida");
+            }else{
+                System.out.print("Has elegido ...");
+                displayTurn(option);
             }
 
         } while (option != 0 && option != 1 && option != 2);
+
 
         return option;
     }
@@ -112,7 +107,7 @@ public class PaperScissorRockFunction {
      * Función que comprueba quien gana o si hay empate
      *
      * @param player número tirada jugador
-     * @param cpu número random de la máquina
+     * @param cpu    número random de la máquina
      * @return 1 si jugador gana, -1 si jugador pierde 0 si hay empate
      */
     public static int checkWin(int player, int cpu) {
@@ -141,10 +136,10 @@ public class PaperScissorRockFunction {
      * @param cont variable contador
      * @return contador
      */
-    public static int turn(int cont) {
-        int contTurn = 0;
-        contTurn++;
-        return contTurn;
+    public static int cont (int cont) {
+
+        cont++;
+        return cont;
 
     }
 
@@ -172,18 +167,25 @@ public class PaperScissorRockFunction {
     }
 
     /**
-     * Fubnción que evalúa cuando termina el juego
+     * Función que evalúa cuando termina el juego
      *
      * @param playerWin contador de turnos GANADOS por jugador
-     * @param cpuWin contador de turnos GANADOS por la máquina
+     * @param cpuWin    contador de turnos GANADOS por la máquina
      * @return true or false
      */
     public static boolean isGameFinished(int playerWin, int cpuWin) {
         boolean gameFinished = true;
-        if (playerWin < 5 || cpuWin < 5) {
-            return false;
+        if (playerWin >= 5 || cpuWin >= 5) {
+            gameFinished = false;
         }
 
         return gameFinished;
+    }
+    public static void displayRound(int playerWin, int cpuWin) {
+
+
+        System.out.println("******* Jugador " +  playerWin + " ********");
+        System.out.println("******* Máquina " +  cpuWin + " ********");
+        System.out.println("*********************************");
     }
 }
