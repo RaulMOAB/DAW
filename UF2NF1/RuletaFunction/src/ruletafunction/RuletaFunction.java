@@ -78,7 +78,7 @@ public class RuletaFunction {
 
     public static int ballNum() {
         Random r = new Random();
-        return r.nextInt(36);
+        return r.nextInt(37);
     }
 
     public static boolean checkWin(int playerNum, int ballNum) {
@@ -98,7 +98,7 @@ public class RuletaFunction {
     }
 
     public static int calcPrize(int playerNum, int bet) {
-        int prize = 0;
+        int prize;
         if (playerNum == 38 || playerNum == 37) {
             prize = bet * 2;
         } else {
