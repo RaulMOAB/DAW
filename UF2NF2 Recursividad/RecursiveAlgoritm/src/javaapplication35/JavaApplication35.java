@@ -18,9 +18,9 @@ public class JavaApplication35 {
         //Realitza un algoritme recursivament , on es llegeixen dos valors enters per teclat i realitza la suma de tots els valors entre els dos números.
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce dos valores enteros");
-        System.out.println("Primer valor");
+        System.out.println("Primer valor: ");
         int num1 = sc.nextInt();
-        System.out.println("Segundo valor");
+        System.out.println("Segundo valor: ");
         int num2 = sc.nextInt();
         int sum1 = sumRecursive(num1);
         int sum2 = sumRecursive(num2);
