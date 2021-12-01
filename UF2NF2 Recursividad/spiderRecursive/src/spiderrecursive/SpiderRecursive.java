@@ -25,12 +25,6 @@ public class SpiderRecursive {
     
     public static int potes(int spider){
         
-//        if (spider <= 1) {
-//            return 8;
-//        }else{
-//            
-//            return 8 + potes(spider - 1);
-//        }
         if (spider <= 1) {
             return 8;
         }else{

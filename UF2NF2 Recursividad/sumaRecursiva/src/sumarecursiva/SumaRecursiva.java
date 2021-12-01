@@ -17,7 +17,7 @@ public class SumaRecursiva {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce un numero y te devuelvo la suma de sus numeros consecutivos");
+        System.out.println("Introduce un número y te devuelvo la suma de sus numeros consecutivos");
         int num = sc.nextInt();
         int result = recursiveSum(num);
         System.out.println("Resultado: " + result);
