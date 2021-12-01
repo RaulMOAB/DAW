@@ -20,7 +20,11 @@ public class PracticaExamenRecursividad {
         displayResult(workout, calories);
         
     }
-
+/**
+ * Función que pide los días de entrenamiento al usuario
+ * @param sc numero introducido por usuario
+ * @return días de entrenamiento
+ */
         public static int askDay(Scanner sc){
             System.out.println("Introduce cuantos días has entrenado para saber las horas totales de entreno y calorías totales quemadas");
             return sc.nextInt();
