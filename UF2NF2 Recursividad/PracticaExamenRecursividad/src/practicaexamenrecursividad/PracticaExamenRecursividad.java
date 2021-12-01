@@ -13,51 +13,60 @@ import java.util.Scanner;
 public class PracticaExamenRecursividad {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce cuantos días has entrenado para saber las calorías totales quemadas");
-        int day = sc.nextInt();
-        //int workout = hourPerDay(day);
-        int calories = hourPerDay(day);
-        //System.out.println("Has entrenado " + workout + " horas a la semana");
-        System.out.println("Has quemado " + calories + " calorías");
+        Scanner sc = new Scanner(System.in);     
+        int day = askDay(sc);
+        int workout = hourPerDay(day);
+        int calories = caloriesPerDay(day);
+        displayResult(workout, calories);
+        
     }
 
+        public static int askDay(Scanner sc){
+            System.out.println("Introduce cuantos días has entrenado para saber las horas totales de entreno y calorías totales quemadas");
+            return sc.nextInt();
+        }
     /**
      * Funcion recursiva que calcula las horas totales de entrenamiento
      *
      * @param day días que ha entrenado
      * @return las horas totales de entrenamiento
      */
-//    public static int hourPerDay(int day) {
-//        
-//        if (day == 0) {
-//            return 0;
-//        }else if(day == 1){
-//            return 3;
-//        }else {
-//            if (day % 4 == 0) {
-//                return 1 + hourPerDay(day - 1);
-//            }
-//            return 3 + hourPerDay(day - 1);
-//        }
-//        
-//    }
+    public static int hourPerDay(int day) {
+        
+        switch (day) {
+            case 0:
+                return 0;
+            case 1:
+                return 3;
+            default:
+                if (day % 4 == 0) {
+                    return 1 + hourPerDay(day - 1);
+                }
+                return 3 + hourPerDay(day - 1);
+        }
+        
+    }
     /**
      * Función que calcula las calorías quemadas segun los días de entrenamiento
      *
      * @param day dias que ha entrenado
      * @return calorías totales consumidas
      */
-    public static int hourPerDay(int day) {
+    public static int caloriesPerDay(int day) {
         final int calories = 150;
         if (day == 0) {
             return 0;        
         } else if (day % 6 == 0 || (day % 4 == 0 && day % 6 == 0)) {
-            return hourPerDay(day - 1);
+            return caloriesPerDay(day - 1);
         } else if (day % 4 == 0) {
-            return calories + hourPerDay(day - 1);
+            return calories + caloriesPerDay(day - 1);
         } 
-        return 3 * calories + hourPerDay(day - 1);
+        return 3 * calories + caloriesPerDay(day - 1);
+    }
+
+    private static void displayResult(int workout, int calories) {
+        System.out.println("Has entrenado " + workout + " horas a la semana");
+        System.out.println("Has quemado " + calories + " calorías");
     }
 
 }
