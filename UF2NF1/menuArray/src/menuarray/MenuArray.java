@@ -28,14 +28,19 @@ public class MenuArray {
     }
 
     public static void displayMenu() {
-        //System.out.println("");
+        
         System.out.println("1 Mostrar valores  2 Introducir valor  3 Salir");
     }
 
     public static int askuser() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce una opción");
-        return sc.nextInt();
+        int user_option;
+        do {
+             System.out.println("Introduce una opción");
+             user_option = sc.nextInt();
+        } while (user_option < 1 || user_option > 3);
+       
+        return user_option;
     }
 
     public static void checkOption(int user_option, int[] arr) {
@@ -61,10 +66,9 @@ public class MenuArray {
         int user_value = sc.nextInt();
         System.out.println("Introduce una posicion");
         int position = sc.nextInt() - 1;
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[position] = user_value;
-        }
+        
+        arr[position] = user_value;
+        
     }
 
 }
