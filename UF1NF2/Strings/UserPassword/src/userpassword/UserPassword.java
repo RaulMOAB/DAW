@@ -27,7 +27,7 @@ public class UserPassword {
         password = sc.nextLine();
         passCheck = passValidation(password);
         if (passCheck) {
-            System.out.println("Password incorrecto, debe ser de almenos 8 caractéres");
+            System.out.println("Password incorrecto");
         } else {
             System.out.println("Usuario y password correcto");
         }
@@ -55,6 +55,10 @@ public class UserPassword {
 
     public static boolean passValidation(String password) {
         int pass = password.length();
+        if (hasSpaceOrNot(password)) {
+            System.out.println("La contraseña no debe contener espacios");
+            return true;
+        }
         return pass < 8;
     }
 
