@@ -9,11 +9,24 @@ package Objetos;
  * @author alumne
  */
 public class Botella {
-    public String material;
-    public int capacidad_total;
-    public int cap_actual;
-    public boolean tapado;
-       
+    private String material;
+    private int capacidad_total;
+    private int cap_actual;
+    private boolean tapado;
+     
+    public Botella(){//constructor
+        this.setMaterial("vidre");
+        this.capacidad_total = 1000;
+        this.cap_actual = 0;
+        this.tapado = true;
+    }
+    
+    public Botella(String material, int capacidad_total){
+        this.setMaterial(material);
+        this.capacidad_total = capacidad_total;
+        this.cap_actual = 0;
+        this.tapado = true;
+    }
     //metodos
     public void setMaterial(String nou_material){
         if (nou_material.equalsIgnoreCase("vidre") || nou_material.equalsIgnoreCase("cartro")) {
@@ -40,8 +53,38 @@ public class Botella {
         return cap_actual;
     }
 
-    public void setCap_actual(int cap_actual) {
-        this.cap_actual = cap_actual;
+    public void rellenarCapacidadActual(int cantidad_rellenar) {// rellenar botella 
+        if ((this.cap_actual + cantidad_rellenar) < this.capacidad_total) {// si la capacidad_actual mas lo que rellenas es menor a la capacidad total
+            this.cap_actual += cantidad_rellenar;
+        }else{// supera la capaidad total
+            this.cap_actual = this.capacidad_total;
+        }
+        
+    }
+    public boolean isTapada(){
+        return tapado;
+    }
+    
+    public void taparBotella(){
+        tapado = true;
+    }
+    
+        public void abrirBotella(){
+        tapado = false;
+    }
+    public int verter(){
+        final int CANTIDAD_VERTIDA = 25;
+        if (!this.isTapada()) {// si esta abierta la botella
+            if (this.cap_actual < CANTIDAD_VERTIDA) {
+                int mlQueda = this.cap_actual;
+                this.cap_actual = 0;//botella vacía
+                return mlQueda;
+            }else{
+                this.cap_actual -= CANTIDAD_VERTIDA;
+                return CANTIDAD_VERTIDA;
+            }
+        }
+        return -1;// si esta tapada
     }
     
 }
