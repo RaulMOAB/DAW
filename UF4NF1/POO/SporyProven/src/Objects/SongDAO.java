@@ -21,7 +21,7 @@ public class SongDAO {
         title.toUpperCase().charAt(0);
         System.out.println("Introduce el autor");
         String singer = sc.nextLine();
-       
+
         Song addSong = new Song(title, singer);
         boolean exist = spotify.contains(addSong);
 
@@ -43,7 +43,7 @@ public class SongDAO {
 
     }
 
-    public boolean borrarCancion(ArrayList<Song> spotify) {
+    public void borrarCancion(ArrayList<Song> spotify) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduce el título de la canción");
@@ -52,22 +52,41 @@ public class SongDAO {
         System.out.println("Introduce el autor");
         String singer = sc.nextLine();
         singer.toUpperCase().charAt(0);
-        
+
         Song remove_song = new Song(title, singer);
-        
+
         if (spotify.remove(remove_song)) {
             System.out.println("Se ha eliminado la cancióncorrectamente");
-            return true;
-        }else{
-            System.err.println("La canción no existe en la lista. No se elimina nada");
-            return false;
-        }
-    }
-    
-    public void listarCanciones(ArrayList<Song> spotify){
-        for (int i = 0; i < spotify.size(); i++) {
-            System.out.println("Título: " + spotify.get(i).getTitle() + " Autor: " + spotify.get(i).getSinger() + " Album: " + spotify.get(i).getAlbum() + " Duración: " + spotify.get(i).getDuration_seg() + " segundos");
-        }
-    }
-}
 
+        } else {
+            System.err.println("La canción no existe en la lista. No se elimina nada");
+
+        }
+    }
+
+    public void listarCanciones(ArrayList<Song> spotify) {
+//        for (int i = 0; i < spotify.size(); i++) {
+//            System.out.println("Título: " + spotify.get(i).getTitle() + " Autor: " + spotify.get(i).getSinger() + " Album: " + spotify.get(i).getAlbum() + " Duración: " + spotify.get(i).getDuration_seg() + " segundos");
+//        }
+        for (int i = 0; i < spotify.size(); i++) {
+            System.out.println(spotify.get(i).toString());
+        }
+        System.out.println("Canciones mostradas " + spotify.size());
+
+    }
+
+    public void listarCancionPorAlbum(ArrayList<Song> spotify) {
+        Scanner sc = new Scanner(System.in);
+        int cont = 0;
+        System.out.println("Qué albúm quieres ver?");
+        String album = sc.nextLine();
+        for (int i = 0; i < spotify.size(); i++) {
+            if (spotify.get(i).getAlbum().equalsIgnoreCase(album)) {
+                System.out.println(spotify.get(i).toString());
+                cont++;
+            }
+        }
+        System.out.println("Canciones mostradas " + cont);
+    }
+
+}

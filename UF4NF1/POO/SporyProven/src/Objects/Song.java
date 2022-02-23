@@ -74,6 +74,11 @@ public class Song {
         }
         return this.singer.equalsIgnoreCase(other.singer);
     }
+
+    @Override
+    public String toString() {
+        return  "Título:" + title + "\nAutor:" + singer + "\nAlbum:" + album + "\nDuración:" + duration_seg;
+    }
     
     
     
