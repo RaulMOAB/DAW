@@ -82,7 +82,22 @@ public abstract class Mascotas implements SerVivo{
         System.out.println("Como");
     }
        
-    
+    public String displayNameAndType(){
+        String dates = "";
+        
+        if (this instanceof Canario) {
+            dates = "Canario";
+        }else if(this instanceof Perro){
+            dates = "Perro";
+        }else if(this instanceof Loro){
+            dates = "Loro";
+        }else if(this instanceof Gato){
+            dates = "Gato";
+        }
+        
+        dates = dates + " - " + this.name;
+        return dates;
+    }
     
     
     

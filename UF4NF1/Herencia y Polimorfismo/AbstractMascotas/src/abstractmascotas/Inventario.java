@@ -38,7 +38,7 @@ public class Inventario {
     /**
      * Elimina los elementos del ArrayList
      */
-    public void cleanInventario(){
+    public void clearInventario(){
         listaMascotas.clear();
         System.out.println("La lista ha sido borrada");
     }
@@ -46,9 +46,17 @@ public class Inventario {
      * Añade animales a la lista
      * @param addPet el obj Mascota que le pasarás
      */
+    
+    
     public void addAnimals(Mascotas addPet){
         //comprobar si ya esta añadido (equals)
         listaMascotas.add(addPet);
+    }
+    
+    public void displayShortDates(){
+        for (Mascotas pet : listaMascotas) {
+            System.out.println(pet.displayNameAndType());
+        }
     }
     
     
