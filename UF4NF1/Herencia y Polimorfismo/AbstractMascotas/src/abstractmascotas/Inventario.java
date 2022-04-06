@@ -5,6 +5,9 @@
 package abstractmascotas;
 
 import Objects.Mascotas;
+import Persistencia.PersistenciaArchivo;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -57,6 +60,16 @@ public class Inventario {
         for (Mascotas pet : listaMascotas) {
             System.out.println(pet.displayNameAndType());
         }
+    }
+
+    public int saveItemsToFile() throws FileNotFoundException, IOException{
+        //graba todo el arrayList en un obj binario
+        if(PersistenciaArchivo.saveAllItems(listaMascotas)){
+            return listaMascotas.size();//numero de items grabados
+        }else{
+           return 0; 
+        }
+        
     }
     
     

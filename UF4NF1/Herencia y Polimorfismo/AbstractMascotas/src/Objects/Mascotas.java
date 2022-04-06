@@ -4,13 +4,15 @@
  */
 package Objects;
 
+import java.io.Serializable;
+
 
 
 /**
  *
  * @author Raul
  */
-public abstract class Mascotas implements SerVivo{
+public abstract class Mascotas implements SerVivo,Serializable{//prepara los archivos para ser grabados
     protected String name;
     protected int age;
     protected boolean state;
