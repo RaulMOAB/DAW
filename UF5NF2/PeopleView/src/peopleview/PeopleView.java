@@ -6,6 +6,8 @@
 package peopleview;
 
 import Controller.MyController;
+import Model.StudentDAO;
+import View.Window;
 
 /**
  *
@@ -17,7 +19,7 @@ public class PeopleView {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       MyController controller;
+       MyController controller = new MyController(new Window(), new StudentDAO());
     }
     
 }

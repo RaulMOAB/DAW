@@ -17,6 +17,12 @@ public class Student {
     private int age;
     private String cicle;
 
+    public Student(String name, String last_name, String cicle) {
+        this.name = name;
+        this.last_name = last_name;
+        this.cicle = cicle;
+    }
+
     public Student(String name, String last_name, int age, String cicle) {
         this.name = name;
         this.last_name = last_name;
@@ -86,6 +92,11 @@ public class Student {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" + "name=" + name + ", last_name=" + last_name + ", age=" + age + ", cicle=" + cicle + '}';
     }
     
 }

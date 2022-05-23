@@ -11,26 +11,38 @@ import java.util.ArrayList;
  *
  * @author ramo4853
  */
-public class StudentDAO implements IStudents{
-    private ArrayList<Student> clase;
+public class StudentDAO implements IStudents {
+
+    private ArrayList<Student> clase = new ArrayList<>();
 
     @Override
     public boolean addStudent(Student add) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //clase = new ArrayList<>();
+        if (!clase.contains(add)) {           
+            clase.add(add);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean deleteStudent(Student del) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return clase.remove(del);
     }
 
     @Override
     public ArrayList<Student> displayStudents() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        return clase;
     }
 
     @Override
     public String listStudents() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public ArrayList<Student> getClase() {
+        return clase;
+    }
+    
 }
