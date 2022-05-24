@@ -7,12 +7,11 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.HeadlessException;
-import java.awt.Rectangle;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -24,14 +23,15 @@ import javax.swing.JTextField;
 public class Panel extends JFrame {
 
     private JPanel data_panel, btn_panel;
-    private JLabel name_lbl, platform_lbl, qty_label;
+    private JLabel name_lbl, platform_lbl, qty_label,jbtn_yes, jbtn_no,online_lbl;
     private JTextField name_txt, platform_txt, qty_txt;
     private JButton add_btn, del_btn, find_btn, list_btn;
     private JRadioButton jbtn_1, jbtn_2;
+    private ButtonGroup btn_group;
 
     public Panel() {
         super("Gestión videojuegos");
-        this.setSize(800, 350);
+        this.setSize(600, 350);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         setElements();
         this.setVisible(true);
@@ -163,6 +163,13 @@ public class Panel extends JFrame {
         platform_lbl.setBounds(100, 100, 120, 30);
         qty_label = new JLabel("Cantidad: ");
         qty_label.setBounds(100, 150, 120, 30);
+        jbtn_yes = new JLabel("Sí");
+        jbtn_yes.setBounds(220, 220, 20, 20);
+        jbtn_no = new JLabel("No");
+        jbtn_no.setBounds(420, 220, 20, 20);
+        online_lbl = new JLabel("Online: ");
+        online_lbl.setBounds(100, 220, 50, 20);
+        
 
         //Textfield
         name_txt = new JTextField(20);
@@ -179,11 +186,15 @@ public class Panel extends JFrame {
         jbtn_2.setBounds(400, 220, 20, 20);
         
         //Buttons
-        add_btn = new JButton("Añadir");
-        
+        add_btn = new JButton("Añadir");       
         del_btn = new JButton("Eliminar");
         find_btn = new JButton("Encontrar");
         list_btn = new JButton("Listar");
+        
+        //ButtonGroup
+        btn_group = new ButtonGroup();
+        btn_group.add(jbtn_1);
+        btn_group.add(jbtn_2);
         
         // add to panel
         data_panel.add(name_lbl);
@@ -193,8 +204,11 @@ public class Panel extends JFrame {
         data_panel.add(qty_label);
         data_panel.add(qty_txt);
         
+        data_panel.add(online_lbl);
         data_panel.add(jbtn_1, BorderLayout.WEST);
+        data_panel.add(jbtn_yes, BorderLayout.WEST);
         data_panel.add(jbtn_2, BorderLayout.EAST);
+        data_panel.add(jbtn_no ,BorderLayout.EAST);
         
         btn_panel.add(add_btn);
         btn_panel.add(del_btn);
@@ -205,5 +219,9 @@ public class Panel extends JFrame {
         cp.add(data_panel);
         bt.add(btn_panel, BorderLayout.SOUTH);
     }
-
+    
+//    public static JOptionPane message(String message){
+//     JOptionPane display = new JOptionPane();
+//        return display;
+//    }
 }

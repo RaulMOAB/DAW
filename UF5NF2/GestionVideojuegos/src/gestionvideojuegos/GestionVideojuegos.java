@@ -6,6 +6,8 @@ package gestionvideojuegos;
 import Controller.MyController;
 import Model.DAO;
 import View.Panel;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +19,12 @@ public class GestionVideojuegos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MyController controller = new MyController(new Panel(),new DAO());
+        try {
+            MyController controller = new MyController(new Panel(),new DAO());
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error en la conexión con la base de Datos ");
+
+        }
     }
     
 }

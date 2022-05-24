@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package Object;
 
 import java.util.Objects;
 
@@ -14,13 +14,20 @@ public class VideoGame {
     private String name;
     private String platform;
     private int qty;
+    private String online;
 
-    public VideoGame(String name, String platform, int qty) {
+    public VideoGame(String name, String platform, int qty, String online) {
         this.name = name;
         this.platform = platform;
         this.qty = qty;
+        this.online = online;
     }
 
+    public VideoGame(String name) {
+        this.name = name;
+    }
+    
+ 
     public String getName() {
         return name;
     }
@@ -45,6 +52,13 @@ public class VideoGame {
         this.qty = qty;
     }
 
+    public String getOnline() {
+        return online;
+    }
+
+    public void setOnline(String online) {
+        this.online = online;
+    }
 
 
     @Override
@@ -64,7 +78,7 @@ public class VideoGame {
 
     @Override
     public String toString() {
-        return "Nombre: " + name + ", plataforma: " + platform + ", unidades: " + qty;
+        return "Nombre: " + name + ", plataforma: " + platform + ", unidades: " + qty + ", online: " + online;
     }
     
     
