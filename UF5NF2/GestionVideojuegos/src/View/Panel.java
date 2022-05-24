@@ -31,7 +31,7 @@ public class Panel extends JFrame {
 
     public Panel() {
         super("Gestión videojuegos");
-        this.setSize(800, 500);
+        this.setSize(800, 350);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         setElements();
         this.setVisible(true);
@@ -153,22 +153,30 @@ public class Panel extends JFrame {
     private void setElements() {
         Container cp = getContentPane();
         Container bt = getContentPane();
-        data_panel = new JPanel(new GridLayout(4, 2, 10, 10));
+        data_panel = new JPanel();
         btn_panel = new JPanel(new FlowLayout());
-
+        data_panel.setLayout(null);
         //Labels      
         name_lbl = new JLabel("Nombre: ");
+        name_lbl.setBounds(100, 50, 120, 30);
         platform_lbl = new JLabel("Plataforma: ");
+        platform_lbl.setBounds(100, 100, 120, 30);
         qty_label = new JLabel("Cantidad: ");
+        qty_label.setBounds(100, 150, 120, 30);
 
         //Textfield
         name_txt = new JTextField(20);
+        name_txt.setBounds(220, 50, 200, 30);
         platform_txt = new JTextField(20);
+        platform_txt.setBounds(220, 100, 200, 30);
         qty_txt = new JTextField(15);
+        qty_txt.setBounds(220, 150, 200, 30);
 
         //jradioButtons
-        jbtn_1 = new JRadioButton();
+        jbtn_1 = new JRadioButton();//hay que añadir jtextfield
+        jbtn_1.setBounds(200, 220, 20, 20);
         jbtn_2 = new JRadioButton();
+        jbtn_2.setBounds(400, 220, 20, 20);
         
         //Buttons
         add_btn = new JButton("Añadir");
