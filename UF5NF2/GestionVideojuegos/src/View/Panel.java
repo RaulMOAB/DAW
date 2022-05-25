@@ -244,8 +244,7 @@ public class Panel extends JFrame {
         
     }
     
-//    public static JOptionPane message(String message){
-//     JOptionPane display = new JOptionPane();
-//        return display;
-//    }
+    public static void displayMessage(String msg){
+         JOptionPane.showMessageDialog(null, msg);
+    }
 }

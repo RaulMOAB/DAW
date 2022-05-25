@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -127,5 +129,26 @@ public class DAO {
             return null;
         }
         return find_game;
+    }
+    
+    public ArrayList<VideoGame> displayVideoGames(VideoGame disp){// seguramente esta mal
+        ArrayList<VideoGame> displayGames = new ArrayList<VideoGame>();
+        try {
+            conn = DbConnect.getConnection();
+            stmt = conn.createStatement();
+            String query = "SELECT * FROM videogames";
+            ResultSet res = stmt.executeQuery(query);
+            while (res.next()) {
+                String name = res.getString("Nombre");
+                String platform = res.getString("Plataforma");
+                int qty = res.getInt("Unidades");
+                String online = res.getString("Online");
+                VideoGame game = new VideoGame(name, platform, qty, online);
+                displayGames.add(game);
+            }
+        } catch (SQLException ex) {
+           return null;
+        }
+        return displayGames;
     }
 }

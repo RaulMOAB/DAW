@@ -7,9 +7,9 @@ package Controller;
 import Model.DAO;
 import Object.VideoGame;
 import View.Panel;
+import View.Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,6 +45,10 @@ public class MyController implements ActionListener {
             deleteVideoGame();
         } else if (e.getSource() == view.getFind_btn() || e.getSource() == view.getFind_it()) {
             findGameByName();
+        }else if(e.getSource() == view.getList_btn()){//preguntar
+            Table tb = new Table();
+            //crear controlador de la otra ventana pasando la vista de la siguiente ventana
+            tb.setVisible(true);
         }
     }
 
@@ -64,17 +68,22 @@ public class MyController implements ActionListener {
         String platform = view.getPlatform_txt().getText();
         int qty = Integer.parseInt(view.getQty_txt().getText());
         String online = validateJRadio();
-        VideoGame add = new VideoGame(name, platform, qty, online);
-
-        int add_game = model.addVideogame(add);
-        if (add_game == 1) {
-            JOptionPane.showMessageDialog(null, "Videojuego añadido correctamente");
-
-        } else if (add_game == 1062){
-            JOptionPane.showMessageDialog(null, "Error: PK duplicada" );
+        if (qty > 0) {
+             VideoGame add = new VideoGame(name, platform, qty, online);
+             int add_game = model.addVideogame(add);
+            if (add_game == 1) {
+                Panel.displayMessage("Videojuego añadido correctamente");
+            } else if (add_game == 1062) {
+                Panel.displayMessage("Error: PK duplicada");
+            } else {
+                Panel.displayMessage("Error: " + add_game);
+            }
         }else{
-              JOptionPane.showMessageDialog(null, "Error: "  + add_game);
+            Panel.displayMessage( "Las unidades deben ser positivas");
         }
+       
+
+       
     }
 
     private void deleteVideoGame() {
@@ -83,15 +92,14 @@ public class MyController implements ActionListener {
 
         int delete_game = model.delete(del);
         switch (delete_game) {
-            case 0:// el Joption debe ser clase statica en Panel.java
-                JOptionPane.showMessageDialog(null, "El videojuego específicado no existe, no se borra ningún registro");
+            case 0:               
+                Panel.displayMessage( "El videojuego específicado no existe, no se borra ningún registro");
                 break;
-            case -1:
-                JOptionPane.showMessageDialog(null, "Error de conexión a la base de datos");
+            case -1:               
+                Panel.displayMessage( "Error de conexión a la base de datos");
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Videojuego eliminado correctamente ");
-
+                Panel.displayMessage("Videojuego eliminado correctamente ");
                 break;
         }
     }
@@ -117,7 +125,7 @@ public class MyController implements ActionListener {
                 view.getJbtn_2().setSelected(true);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "El registro especifícado no existe");
+            Panel.displayMessage("El registro especifícado no existe");
         }
     }
 

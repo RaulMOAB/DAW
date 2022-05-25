@@ -49,6 +49,7 @@ public class VideoGame {
     }
 
     public void setQty(int qty) {
+        
         this.qty = qty;
     }
 
