@@ -11,6 +11,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -28,6 +31,10 @@ public class Panel extends JFrame {
     private JButton add_btn, del_btn, find_btn, list_btn;
     private JRadioButton jbtn_1, jbtn_2;
     private ButtonGroup btn_group;
+    //Menu
+    private JMenu menu;
+    private JMenuBar menuBar;
+    private JMenuItem add_it, del_it, find_it, list_it;
 
     public Panel() {
         super("Gestión videojuegos");
@@ -41,9 +48,7 @@ public class Panel extends JFrame {
         return data_panel;
     }
 
-    public void setData_panel(JPanel data_panel) {
-        this.data_panel = data_panel;
-    }
+
 
     public JLabel getName_lbl() {
         return name_lbl;
@@ -97,57 +102,56 @@ public class Panel extends JFrame {
         return add_btn;
     }
 
-    public void setAdd_btn(JButton add_btn) {
-        this.add_btn = add_btn;
-    }
 
     public JButton getDel_btn() {
         return del_btn;
     }
 
-    public void setDel_btn(JButton del_btn) {
-        this.del_btn = del_btn;
-    }
 
     public JButton getFind_btn() {
         return find_btn;
     }
 
-    public void setFind_btn(JButton find_btn) {
-        this.find_btn = find_btn;
-    }
 
     public JButton getList_btn() {
         return list_btn;
     }
 
-    public void setList_btn(JButton list_btn) {
-        this.list_btn = list_btn;
-    }
 
     public JRadioButton getJbtn_1() {
         return jbtn_1;
     }
 
-    public void setJbtn_1(JRadioButton jbtn_1) {
-        this.jbtn_1 = jbtn_1;
-    }
 
     public JRadioButton getJbtn_2() {
         return jbtn_2;
     }
 
-    public void setJbtn_2(JRadioButton jbtn_2) {
-        this.jbtn_2 = jbtn_2;
-    }
 
     public JPanel getBtn_panel() {
         return btn_panel;
     }
 
-    public void setBtn_panel(JPanel btn_panel) {
-        this.btn_panel = btn_panel;
+    public ButtonGroup getBtn_group() {
+        return btn_group;
     }
+
+    public JMenuItem getAdd_it() {
+        return add_it;
+    }
+
+    public JMenuItem getDel_it() {
+        return del_it;
+    }
+
+    public JMenuItem getFind_it() {
+        return find_it;
+    }
+
+    public JMenuItem getList_it() {
+        return list_it;
+    }
+
     
 
     private void setElements() {
@@ -156,6 +160,7 @@ public class Panel extends JFrame {
         data_panel = new JPanel();
         btn_panel = new JPanel(new FlowLayout());
         data_panel.setLayout(null);
+        
         //Labels      
         name_lbl = new JLabel("Nombre: ");
         name_lbl.setBounds(100, 50, 120, 30);
@@ -196,6 +201,24 @@ public class Panel extends JFrame {
         btn_group.add(jbtn_1);
         btn_group.add(jbtn_2);
         
+        //Menu
+        menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        
+        menu = new JMenu("Opciones");
+        menuBar.add(menu);
+        
+        //MenuItems
+        add_it = new JMenuItem("Añadir");
+        del_it = new JMenuItem("Eliminar");
+        find_it = new JMenuItem("Encontrar");
+        list_it = new JMenuItem("Listar");
+        
+        menu.add(add_it);
+        menu.add(del_it);
+        menu.add(find_it);
+        menu.add(list_it);
+        
         // add to panel
         data_panel.add(name_lbl);
         data_panel.add(name_txt);
@@ -218,6 +241,7 @@ public class Panel extends JFrame {
         //add to container
         cp.add(data_panel);
         bt.add(btn_panel, BorderLayout.SOUTH);
+        
     }
     
 //    public static JOptionPane message(String message){

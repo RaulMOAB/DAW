@@ -26,8 +26,8 @@ public class VideoGame {
     public VideoGame(String name) {
         this.name = name;
     }
-    
- 
+
+
     public String getName() {
         return name;
     }
@@ -60,6 +60,11 @@ public class VideoGame {
         this.online = online;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -75,6 +80,11 @@ public class VideoGame {
         final VideoGame other = (VideoGame) obj;
         return Objects.equals(this.name, other.name);
     }
+
+
+
+
+
 
     @Override
     public String toString() {

@@ -11,8 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -99,19 +97,18 @@ public class DAO {
         }
     }
     /**
-     * Encontrar juegos por plataforma
+     * Encontrar juegos por nombre
      * @param find videojuego pasado por parametro
      * @return conjunto de videojuegos
      */
-    public VideoGame find (VideoGame find){// no funciona
-        VideoGame find_game = find;
+    public VideoGame find (VideoGame find){
+        VideoGame find_game = null;
         try {
             conn = DbConnect.getConnection();
             if (conn != null) {
                 stmt = conn.createStatement();
                 String query = "SELECT * FROM videogames"
-                        + " WHERE Plataforma ='" + find.getPlatform()+ "'";
-                System.out.println(query);
+                        + " WHERE UPPER(Nombre) ='" + find.getName().toUpperCase()+ "'";              
                 ResultSet res = stmt.executeQuery(query);
                 while (res.next()){
                     String name = res.getString("Nombre");
